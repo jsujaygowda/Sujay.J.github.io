@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sujay J - QA Consultant Portfolio</title>
+    <style>
+        :root {
+            --color-cream-50: rgba(252, 252, 249, 1);
+            --color-cream-100: rgba(255, 255, 253, 1);
+            --color-gray-200: rgba(245, 245, 245, 1);
+            --color-gray-300: rgba(167, 169, 169, 1);
+            --color-gray-400: rgba(119, 124, 124, 1);
+            --color-slate-500: rgba(98, 108, 113, 1);
+            --color-brown-600: rgba(94, 82, 64, 1);
+            --color-charcoal-700: rgba(31, 33, 33, 1);
+            --color-charcoal-800: rgba(38, 40, 40, 1);
+            --color-teal-300: rgba(50, 184, 198, 1);
+            --color-teal-500: rgba(33, 128, 141, 1);
+            --color-teal-600: rgba(29, 116, 128, 1);
+            --color-brown-600-rgb: 94, 82, 64;
+            --color-teal-500-rgb: 33, 128, 141;
+            --color-background: var(--color-cream-50);
+            --color-surface: var(--color-cream-100);
+            --color-text: rgba(19, 52, 59, 1);
+            --color-text-secondary: var(--color-slate-500);
+            --color-primary: var(--color-teal-500);
+            --color-primary-hover: var(--color-teal-600);
+            --color-border: rgba(var(--color-brown-600-rgb), 0.2);
+            --color-card-border: rgba(var(--color-brown-600-rgb), 0.12);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --color-gray-400-rgb: 119, 124, 124;
+                --color-gray-200-rgb: 245, 245, 245;
+                --color-background: var(--color-charcoal-700);
+                --color-surface: var(--color-charcoal-800);
+                --color-text: var(--color-gray-200);
+                --color-text-secondary: rgba(167, 169, 169, 0.7);
+                --color-primary: var(--color-teal-300);
+                --color-border: rgba(var(--color-gray-400-rgb), 0.3);
+                --color-card-border: rgba(var(--color-gray-400-rgb), 0.2);
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--color-background);
+            color: var(--color-text);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: var(--color-surface);
+            border-bottom: 1px solid var(--color-border);
+            padding: 40px 0;
+            margin-bottom: 40px;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .header-left h1 {
+            font-size: 36px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--color-text);
+        }
+
+        .header-left .title {
+            font-size: 18px;
+            color: var(--color-primary);
+            font-weight: 500;
+        }
+
+        .header-right {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            align-items: flex-end;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--color-text-secondary);
+            font-size: 14px;
+        }
+
+        .contact-item a {
+            color: var(--color-primary);
+            text-decoration: none;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        nav {
+            background: var(--color-surface);
+            border-bottom: 1px solid var(--color-border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 32px;
+            padding: 16px 0;
+        }
+
+        nav a {
+            color: var(--color-text);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        nav a:hover {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        section {
+            margin-bottom: 60px;
+            scroll-margin-top: 80px;
+        }
+
+        h2 {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            color: var(--color-text);
+            border-bottom: 2px solid var(--color-primary);
+            padding-bottom: 12px;
+        }
+
+        .card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-card-border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .job-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--color-text);
+        }
+
+        .company {
+            font-size: 16px;
+            color: var(--color-primary);
+            font-weight: 500;
+            margin-top: 4px;
+        }
+
+        .job-date {
+            font-size: 14px;
+            color: var(--color-text-secondary);
+        }
+
+        .job-location {
+            font-size: 14px;
+            color: var(--color-text-secondary);
+            margin-top: 2px;
+        }
+
+        .responsibilities {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .responsibilities li {
+            padding-left: 24px;
+            margin-bottom: 8px;
+            position: relative;
+            color: var(--color-text-secondary);
+        }
+
+        .responsibilities li:before {
+            content: "▸";
+            position: absolute;
+            left: 8px;
+            color: var(--color-primary);
+            font-weight: bold;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-category {
+            background: var(--color-surface);
+            border: 1px solid var(--color-card-border);
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .skill-category h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--color-primary);
+            margin-bottom: 12px;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            background: rgba(var(--color-teal-500-rgb), 0.1);
+            color: var(--color-primary);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+            border: 1px solid rgba(var(--color-teal-500-rgb), 0.2);
+        }
+
+        .education-item {
+            margin-bottom: 20px;
+        }
+
+        .degree {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--color-text);
+        }
+
+        .institution {
+            font-size: 16px;
+            color: var(--color-primary);
+            margin-top: 4px;
+        }
+
+        .edu-date {
+            font-size: 14px;
+            color: var(--color-text-secondary);
+            margin-top: 4px;
+        }
+
+        .summary-text {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--color-text-secondary);
+            margin-bottom: 16px;
+        }
+
+        .achievements {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .achievement-card {
+            background: linear-gradient(135deg, rgba(var(--color-teal-500-rgb), 0.1), rgba(var(--color-teal-500-rgb), 0.05));
+            border: 1px solid rgba(var(--color-teal-500-rgb), 0.2);
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .achievement-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--color-primary);
+            margin-bottom: 8px;
+        }
+
+        .achievement-desc {
+            font-size: 14px;
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+        }
+
+        footer {
+            background: var(--color-surface);
+            border-top: 1px solid var(--color-border);
+            padding: 30px 0;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        footer p {
+            color: var(--color-text-secondary);
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .header-right {
+                align-items: flex-start;
+            }
+
+            .header-left h1 {
+                font-size: 28px;
+            }
+
+            h2 {
+                font-size: 24px;
+            }
+
+            nav ul {
+                gap: 16px;
+            }
+
+            .job-header {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="header-left">
+                    <h1>Sujay J</h1>
+                    <p class="title">QA Consultant | Validation Engineering Specialist</p>
+                </div>
+                <div class="header-right">
+                    <div class="contact-item">
+                        <span>📧</span>
+                        <a href="mailto:j.sujay@outlook.com">j.sujay@outlook.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <span>📱</span>
+                        <a href="tel:+919741967318">+91 9741967318</a>
+                    </div>
+                    <div class="contact-item">
+                        <span>📍</span>
+                        <span>Bengaluru, Karnataka</span>
+                    </div>
+                    <div class="contact-item">
+                        <span>💼</span>
+                        <a href="https://www.linkedin.com/in/jsujay1012" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#achievements">Achievements</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section id="about">
+            <h2>Professional Summary</h2>
+            <p class="summary-text">
+                Quality Assurance and Analysis professional with over 9+ years of experience, specializing in validation engineering, software testing, and quality assurance. Proven expertise in Pharmacovigilance processes and proficiency in Oracle Argus Safety system and OBIEE.
+            </p>
+            <p class="summary-text">
+                Skilled in GAMP 5 guidelines with extensive experience in Oracle Argus configuration including Advanced Conditions, workflow setup, codelist management, and MedDRA dictionary upgrades. Strong background in validation documentation (URS, FRS, SDS, IQ/OQ/PQ) and compliance with Good Documentation Practices (GDP).
+            </p>
+            <p class="summary-text">
+                Experienced in SQL query writing for backend validation, test planning, and execution across Waterfall and Agile methodologies. Proficient in defect tracking tools (ALM, JIRA) with deep understanding of SDLC, STLC, and regulatory guidelines including 21 CFR Part 11, PMDA, ICH, E2B R2/R3, and regulatory reporting standards.
+            </p>
+        </section>
+
+        <section id="experience">
+            <h2>Professional Experience</h2>
+            
+            <div class="card">
+                <div class="job-header">
+                    <div>
+                        <div class="job-title">Consultant</div>
+                        <div class="company">IQVIA</div>
+                    </div>
+                    <div>
+                        <div class="job-date">August 2018 - Present</div>
+                        <div class="job-location">Bangalore, India</div>
+                    </div>
+                </div>
+                <ul class="responsibilities">
+                    <li>End-to-end configuration of Argus Safety, including workflow customization and user role management</li>
+                    <li>Performed manual testing of Argus functionalities such as case intake, triage, medical coding, and regulatory reporting</li>
+                    <li>Managed MedDRA dictionary updates, ensuring accurate adverse event coding and compliance with global standards</li>
+                    <li>Designed and executed test cases and scripts for Argus modules including Case Processing, Reporting, and Administration</li>
+                    <li>Collaborated with cross-functional teams to validate system changes and support User Acceptance Testing (UAT)</li>
+                    <li>Documented and tracked defects using HP ALM, coordinated with development teams for resolution, and conducted regression testing</li>
+                    <li>Maintained comprehensive test documentation including test plans, test cases, and test reports</li>
+                    <li>Contributed to process improvements by suggesting best practices and innovative testing approaches</li>
+                    <li>Involved in all phases of the Software Testing Life Cycle (STLC), from requirement analysis to test closure</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="job-header">
+                    <div>
+                        <div class="job-title">Associate Technical Analyst</div>
+                        <div class="company">Aris Global Software Pvt Ltd</div>
+                    </div>
+                    <div>
+                        <div class="job-date">March 2016 - August 2018</div>
+                        <div class="job-location">Mysore, India</div>
+                    </div>
+                </div>
+                <ul class="responsibilities">
+                    <li>Conducted manual functional testing, regression testing, system testing, and integration testing for web-based and desktop applications</li>
+                    <li>Created and maintained test cases, test plans, and test reports</li>
+                    <li>Worked closely with developers to ensure timely resolution of defects</li>
+                    <li>Identified and reported defects using Bugzilla and tracked them until resolution</li>
+                    <li>Conducted peer reviews of test cases and test scripts</li>
+                    <li>Developed IQ, PQ, FS, URS, and OQ documentation</li>
+                    <li>Performed MedDRA loading and recoding twice a year</li>
+                    <li>Configured EMA, FDA and Health Canada gateway setup</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Testing Expertise</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">Test Planning</span>
+                        <span class="skill-tag">Test Case Design</span>
+                        <span class="skill-tag">Functional Testing</span>
+                        <span class="skill-tag">Regression Testing</span>
+                        <span class="skill-tag">Integration Testing</span>
+                        <span class="skill-tag">UAT Support</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Tools &amp; Systems</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">Oracle Argus</span>
+                        <span class="skill-tag">OBIEE</span>
+                        <span class="skill-tag">HP ALM</span>
+                        <span class="skill-tag">JIRA</span>
+                        <span class="skill-tag">Bugzilla</span>
+                        <span class="skill-tag">SQL</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Regulatory Knowledge</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">GAMP 5</span>
+                        <span class="skill-tag">21 CFR Part 11</span>
+                        <span class="skill-tag">ICH Guidelines</span>
+                        <span class="skill-tag">E2B R2/R3</span>
+                        <span class="skill-tag">MedDRA</span>
+                        <span class="skill-tag">GDP</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Documentation</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">URS</span>
+                        <span class="skill-tag">FRS</span>
+                        <span class="skill-tag">SDS</span>
+                        <span class="skill-tag">IQ/OQ/PQ</span>
+                        <span class="skill-tag">Test Plans</span>
+                        <span class="skill-tag">Test Reports</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Methodologies</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">Agile</span>
+                        <span class="skill-tag">Waterfall</span>
+                        <span class="skill-tag">SDLC</span>
+                        <span class="skill-tag">STLC</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Programming</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">SQL</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="education">
+            <h2>Education</h2>
+            <div class="card">
+                <div class="education-item">
+                    <div class="degree">BE in Computer Science</div>
+                    <div class="institution">SJBIT Institute of Technology</div>
+                    <div class="edu-date">Graduated: April 2015</div>
+                    <div class="job-location">Bengaluru, Karnataka</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="education-item">
+                    <div class="degree">Diploma in Computer Science</div>
+                    <div class="institution">SKB Polytechnic</div>
+                    <div class="edu-date">Graduated: June 2011</div>
+                    <div class="job-location">Bengaluru, Karnataka</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="achievements">
+            <h2>Professional Strengths &amp; Achievements</h2>
+            <div class="achievements">
+                <div class="achievement-card">
+                    <div class="achievement-title">🏆 Best Team Player</div>
+                    <div class="achievement-desc">
+                        Awarded a medal for the timely delivery of projects with cross-functional teams as well as external vendors
+                    </div>
+                </div>
+
+                <div class="achievement-card">
+                    <div class="achievement-title">⏱️ Time Management Excellence</div>
+                    <div class="achievement-desc">
+                        Consistently complete tasks as per schedule while continuously working on various platforms and expanding learning capability in terms of quality
+                    </div>
+                </div>
+
+                <div class="achievement-card">
+                    <div class="achievement-title">💬 Communication</div>
+                    <div class="achievement-desc">
+                        Strong communication skills enabling effective collaboration with cross-functional teams and stakeholders
+                    </div>
+                </div>
+
+                <div class="achievement-card">
+                    <div class="achievement-title">👨‍💼 Leadership</div>
+                    <div class="achievement-desc">
+                        Demonstrated leadership abilities in guiding teams and mentoring junior team members
+                    </div>
+                </div>
+
+                <div class="achievement-card">
+                    <div class="achievement-title">👂 Active Listener</div>
+                    <div class="achievement-desc">
+                        Excellent listening skills ensuring thorough understanding of requirements and stakeholder needs
+                    </div>
+                </div>
+
+                <div class="achievement-card">
+                    <div class="achievement-title">🔄 Adaptability</div>
+                    <div class="achievement-desc">
+                        Quick learner with ability to grasp new technologies and adapt to any new environment, capable of working with multiple projects independently or in teams
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Sujay J. All rights reserved. | Quality Assurance Consultant</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                if (targetSection) {
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add active state to navigation based on scroll position
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+            
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.style.background = '';
+                link.style.color = '';
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.style.background = 'var(--color-primary)';
+                    link.style.color = 'white';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
